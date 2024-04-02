@@ -1,0 +1,25 @@
+
+hell.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <gcd-0x8>:
+   0:	00a00413          	li	s0,10
+   4:	06400493          	li	s1,100
+
+00000008 <gcd>:
+   8:	00940a63          	beq	s0,s1,1c <stop>
+   c:	00944463          	blt	s0,s1,14 <less>
+  10:	40940433          	sub	s0,s0,s1
+
+00000014 <less>:
+  14:	408484b3          	sub	s1,s1,s0
+  18:	ff1ff06f          	j	8 <gcd>
+
+0000001c <stop>:
+  1c:	00802423          	sw	s0,8(zero) # 8 <gcd>
+
+00000020 <end>:
+  20:	00802503          	lw	a0,8(zero) # 8 <gcd>
+  24:	ffdff06f          	j	20 <end>
